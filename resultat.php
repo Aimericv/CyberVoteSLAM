@@ -5,6 +5,10 @@ include("./assets/includes/header.php");
 
 
   <h1>Hello, world!</h1>
+  <div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
   <table class="table">
   <thead>
@@ -35,7 +39,9 @@ include("./assets/includes/header.php");
     </tr>
   </tbody>
 </table>
-
+<button type="button" class="btn btn-primary">Button</button>
+  </div>
+</div>
   <?php
 include("./assets/includes/footer.php");
 ?>
