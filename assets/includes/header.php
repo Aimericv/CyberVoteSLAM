@@ -13,7 +13,7 @@
         <a class="nav-link" href="vote.php"><i class="fas fa-envelope"></i> Voter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="resultat.php"><i class="fas fa-signal"></i> Résultat</a>
+        <a class="nav-link" href="resultat.php"><i class="fas fa-stream"></i> Résultat</a>
       </li>
       </li>
     </ul>
