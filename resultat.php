@@ -2,8 +2,6 @@
 include("./assets/includes/head.php");
 include("./assets/includes/header.php");
 ?>
-
-
   <div class="card">
   <div class="card-body">
     <h5 class="card-title">Résultat des votes saison :</h5>
