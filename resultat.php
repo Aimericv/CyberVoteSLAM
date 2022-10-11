@@ -4,10 +4,9 @@ include("./assets/includes/header.php");
 ?>
 
 
-  <h1>Hello, world!</h1>
   <div class="card">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Résultat des votes saison :</h5>
     <p class="card-text">
 
   <table class="table">
@@ -33,14 +32,15 @@ include("./assets/includes/header.php");
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
-      <td colspan="2" class="table-active">Larry the Bird</td>
-      <td>@twitter</td>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
     </tr>
   </tbody>
 </table>
 </p>
-<button type="button" class="btn btn-primary">Button</button>
+<button type="button" class="btn btn-primary">Actualiser <i class="far fa-sync"></i></button>
   </div>
 </div>
   <?php
