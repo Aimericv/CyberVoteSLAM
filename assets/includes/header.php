@@ -1,21 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">CyberVote</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-success navbar-light ">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Accueil </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="vote.php">Voter</a>
-      </li>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" href="resultat.php">Résultats</button>
-    </form>
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Brand</a>
+
+    <!-- Toggle button -->
+    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Link -->
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+
+      </ul>
+
+      <!-- Icons -->
+      <ul class="navbar-nav d-flex flex-row me-1">
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+        </li>
+      </ul>
+
+    </div>
   </div>
+  <!-- Container wrapper -->
 </nav>
+<!-- Navbar -->
