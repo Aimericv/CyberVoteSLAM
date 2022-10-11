@@ -21,7 +21,7 @@
 
       </div>
 
-      <div class="col-md-3 mb-md-0 mb-3">
+      <!-- <div class="col-md-3 mb-md-0 mb-3">
         <h5 class="text-uppercase">Links</h5>
 
         <ul class="list-unstyled">
@@ -39,10 +39,10 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
 
   </div>
-  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+  <div class="footer-copyright text-center py-3">© 2022 Copyright
   </div>
     <script nomodule src="./assets/js/bootstrap.min.js"></script>
     <script nomodule src="./assets/js/jquery.js"></script>
