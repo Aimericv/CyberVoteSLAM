@@ -8,7 +8,10 @@ include("./assets/includes/header.php");
 
   <table class="table">
   <thead class="table-dark">Résultat des votes dession: </thead>
-  <tbody></tbody>
+  <tbody> <tr>
+            <td>The table body</td>
+            <td>with two columns</td>
+        </tr></tbody>
 </table>
 
   <?php
