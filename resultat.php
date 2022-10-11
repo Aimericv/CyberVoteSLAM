@@ -40,7 +40,7 @@ include("./assets/includes/header.php");
   </tbody>
 </table>
 </p>
-<button type="button" class="btn btn-primary">Actualiser <i class="far fa-sync"></i></button>
+<button type="button" class="btn btn-primary">Voir plus <i class="fa-solid fa-plus"></button>
   </div>
 </div>
   <?php
