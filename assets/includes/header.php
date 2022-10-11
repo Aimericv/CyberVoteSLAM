@@ -15,7 +15,7 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-success my-2 my-sm-0" href="resultat.php">Résultats</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" href="resultat.php" type="submit">Résultats</button>
     </form>
   </div>
 </nav>
