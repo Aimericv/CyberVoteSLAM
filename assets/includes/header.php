@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php">Accueil <i class="fas fa-home"></i></a>
+        <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="vote.php">Voter <i class="fas fa-envelope"></i></a>
+        <a class="nav-link" href="vote.php"><i class="fas fa-envelope"></i> Voter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="resultat.php">Résultat <i class="fas fa-signal"></i></a>
+        <a class="nav-link" href="resultat.php"><i class="fas fa-signal"></i> Résultat</a>
       </li>
       </li>
     </ul>
