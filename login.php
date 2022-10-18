@@ -153,8 +153,8 @@ include("./assets/includes/header.php");
           $username = "cybervote";
           $password = "cybervote";
           $dbname = "cybervote";
-          $a= $_POST['prenom'];
-          $b= $_POST['nom'];
+          $a= $_POST['nom'];
+          $b= $_POST['prenom'];
           
           try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -162,7 +162,7 @@ include("./assets/includes/header.php");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO `candidat` ( `nom`, `prenom`)
-          VALUES( '$b', '$a')
+          VALUES( '$a', '$b')
           ";
 
             // utiliser la fonction exec() car aucun résultat n'est renvoyé
