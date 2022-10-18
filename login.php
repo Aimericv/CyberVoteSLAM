@@ -149,9 +149,9 @@ include("./assets/includes/header.php");
           <?php
           
 
-          $servername = "172.16.118.15";
-          $username = "root";
-          $password = "azertysio";
+          $servername = "172.16.0.196";
+          $username = "cybervote";
+          $password = "cybervote";
           $dbname = "cybervote";
           $a= $_POST['prenom'];
           $b= $_POST['nom'];
