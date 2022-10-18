@@ -147,16 +147,36 @@ include("./assets/includes/header.php");
         
           <button type="submit" method="post" onclick="javascript: form.action='';">Envoyer</button>
           <?php
-          $mysqli = mysqli_connect("172.16.0.196", "cybervote", "cybervote", "cybervote");
-          if (mysqli_connect_errno()) {
-             echo "Echec lors de la connexion à MySQL : " . mysqli_connect_error();
+          
+
+          $servername = "172.16.118.15";
+          $username = "root";
+          $password = "azertysio";
+          $dbname = "cybervote";
+          $a= $_POST['prenom'];
+          $b= $_POST['nom'];
+          
+          try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            // définir le mode exception d'erreur PDO 
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "INSERT INTO `candidat` ( `nom`, `prenom`)
+          VALUES( '$a', '$b')
+          ";
+
+            // utiliser la fonction exec() car aucun résultat n'est renvoyé
+            $conn->exec($sql);
+            echo "Nouveaux enregistrement ajoutés avec sucéés";
+          } catch(PDOException $e) {
+            echo $sql . "
+          " . $e->getMessage();
           }
-        
-          $result_json = array();
-          $results = mysqli_query($mysqli, "SELECT * FROM candidat WHERE nom='" . $_POST['nom'] . "'" );
-          while($row = mysqli_fetch_assoc($results)) {
-            $result_json[] = $row;
-          }
+          $conn = null;
+
+          
+
+          
           ?>
          
         
