@@ -162,7 +162,7 @@ include("./assets/includes/header.php");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO `candidat` ( `nom`, `prenom`)
-          VALUES( '$a', '$b')
+          VALUES( '$b', '$a')
           ";
 
             // utiliser la fonction exec() car aucun résultat n'est renvoyé
