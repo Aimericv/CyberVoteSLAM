@@ -137,10 +137,14 @@ include("./assets/includes/header.php");
       <h1>Connexion</h1>
       <form action="/" method="post">
         
-        <label id="icon" for="prenom"><i class="fas fa-envelope"></i></label>
+        <label id="icon" for="prenom"><i class="fas fa-user"></i></label>
         <input type="text" name="prenom" id="prenom" placeholder="Prenom" required/>
         <label id="icon" for="nom"><i class="fas fa-user"></i></label>
         <input type="text" name="nom" id="nom" placeholder="Nom" required/>
+        <label id="icon" for="code_postale"><i class="fas fa-location-dot"></i></label>
+        <input type="text" name="code_postale" id="nom" placeholder="Code Postal" required/>
+        <label id="icon" for="date_naissance"><i class="fas fa-birthday-cake"></i></label>
+        <input type="text" name="date_naissance" id="nom" placeholder="Date de naissance" required/>
         
         
         <div class="btn-block">
@@ -155,19 +159,21 @@ include("./assets/includes/header.php");
           $dbname = "cybervote";
           $a= $_POST['nom'];
           $b= $_POST['prenom'];
+          $c= $_POST['code_postale'];
+          $d= $_POST['date_naissance'];
           
           try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             // définir le mode exception d'erreur PDO 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-            $sql = "INSERT INTO `candidat` ( `nom`, `prenom`)
-          VALUES( '$a', '$b')
+            $sql = "INSERT INTO `Electeur` ( `nom`, `prenom`, `code_postale`, `date_naissance`)
+          VALUES( '$a', '$b', '$c', '$d')
           ";
 
             // utiliser la fonction exec() car aucun résultat n'est renvoyé
             $conn->exec($sql);
-            echo "Nouveaux enregistrement ajoutés avec sucéés";
+            //echo "Nouveaux enregistrement ajoutés avec sucéés";
           } catch(PDOException $e) {
             echo $sql . "
           " . $e->getMessage();
