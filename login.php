@@ -153,7 +153,7 @@ include("./assets/includes/header.php");
           <?php
           
 
-          $servername = "172.16.0.196";
+          $servername = "localhost";
           $username = "cybervote";
           $password = "cybervote";
           $dbname = "cybervote";
