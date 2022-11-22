@@ -1,5 +1,12 @@
 <?php
-define('DB_HOST', 'localhost'); // Hôte
-define('DB_NAME', 'cybervote'); // Nom de la base de donnée
-define('DB_USER', 'cybervote'); // Nom d'utilisateur
-define('DB_PASS', 'cybervote'); // Mot de passe
+define('DB_SERVER', '127.0.0.1');
+define('DB_USERNAME', 'cybervote');
+define('DB_PASSWORD', 'cybervote');
+define('DB_NAME', 'cybervote');
+$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+ 
+if($conn === false){
+    die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
+}
+
+?>

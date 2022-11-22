@@ -15,6 +15,7 @@
       <li class="nav-item">
         <a class="nav-link" href="resultat.php"><i class="fas fa-stream"></i> Résultat</a>
       </li>
+      
       </li>
     </ul>
 
