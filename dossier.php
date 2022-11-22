@@ -1,20 +1,14 @@
 <?php
 include("./assets/includes/head.php");
 include("./assets/includes/header.php");
-session_start();
 if (!isset($_SESSION['login'])) {
 	header ('Location: login.php');
 	exit();
 }
 ?>
-
-
-  <!DOCTYPE html>
-<html>
+ 
   <head>
     <title>Formulaire</title>
-    
-  
   </head>
   <body>
     <div class="main-block">
@@ -67,8 +61,7 @@ if (!isset($_SESSION['login'])) {
         </div>
       </form>
     </div>
-  </body>
-</html>
+
 
 
 

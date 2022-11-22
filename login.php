@@ -2,13 +2,11 @@
 include("./assets/includes/head.php");
 include("./assets/includes/header.php");
 include("./assets/includes/config.php");
+
 ?>
 
 <body>
   <?php
-
-session_start();
-
 if (isset($_POST['username'])){
   $username = stripslashes($_REQUEST['username']);
   $username = mysqli_real_escape_string($conn, $username);
@@ -26,7 +24,7 @@ if (isset($_POST['username'])){
   <div class="row d-flex justify-content-center">
     <div class="col-md-6">
       <div class="main-block">
-        <h1>Authentification</h1>
+        <h1>Authentification </h1>
       </div>
       <?php if (! empty($message)) { ?>
     <p class="errorMessage"><?php echo $message; ?></p>
@@ -37,7 +35,7 @@ if (isset($_POST['username'])){
             required />
           <label class="form-label" for="form2Example1">Numéro de carte vote</label>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Se connecter</button>
+        <button type="submit" name="submit" class="btn btn-primary btn-block mb-4"><i class="fas fa-sign-out-alt"></i> Se connecter</button>
     </div>
     </form>
   </div>
