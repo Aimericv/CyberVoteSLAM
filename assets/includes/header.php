@@ -25,6 +25,9 @@ session_start();?>
         <a class="nav-link" href="logout.php"><i class="fas fa-user-alt-slash"></i> Déconnexion</a>
       </li>			
  <?php } ?>
+
+
+
  </li>
     </ul>
 
