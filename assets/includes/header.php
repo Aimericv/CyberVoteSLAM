@@ -15,7 +15,9 @@ session_start();?>
         <a class="nav-link" href="resultat.php"><i class="fas fa-stream"></i> Résultat</a>
       </li>
       <?php if(!isset($_SESSION['login'])) { ?>
-      
+        <li class="nav-item">
+        <a class="nav-link" href="login.php"><i class="fas fa-unlock"></i> Authentification</a>
+      </li>	
 
       <?php } else { ?>
         <li class="nav-item">

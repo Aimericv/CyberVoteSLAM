@@ -6,7 +6,19 @@ include("./assets/includes/header.php");
   <div class="card-body">
     <h5 class="card-title">Résultat des votes saison :</h5>
     <p class="card-text">
-
+    <div class="container">
+  <div class="row">
+    <div class="col-md">
+      One of three columns
+    </div>
+    <div class="col-md">
+      One of three columns
+    </div>
+    <div class="col-md">
+      One of three columns
+    </div>
+  </div>
+</div>
   <table class="table">
   <thead>
     <tr>
