@@ -6,10 +6,7 @@ if (!isset($_SESSION['login'])) {
 	exit();
 }
 ?>
- 
-  <head>
-    <title>Formulaire</title>
-  </head>
+
   <body>
     <div class="main-block">
       <h1>Inscription de dossier</h1>
@@ -23,8 +20,6 @@ if (!isset($_SESSION['login'])) {
         <input type="text" name="code_postale" id="nom" placeholder="Code Postal" required/>
         <label id="icon" for="date_naissance"><i class="fas fa-birthday-cake"></i></label>
         <input type="text" name="date_naissance" id="nom" placeholder="Date de naissance" required/>
-        
-        
         <div class="btn-block">
         <button type="submit" method="post" onclick="javascript: form.action='';">Envoyer</button>
         
