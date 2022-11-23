@@ -8,9 +8,10 @@ if (!isset($_SESSION['login'])) {
 }
 ?>
 
-  <body>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
     <div class="main-block">
-      <h1>Inscription de dossier</h1>
+      <h1>Mon dossier d'inscription</h1>
       <form action="/" method="post">
 
   <div class="row mb-4">
@@ -40,7 +41,7 @@ if (!isset($_SESSION['login'])) {
 
 
 
-  <button type="submit" class="btn btn-primary btn-block mb-4" method="post" onclick="javascript: form.action='';">Valider les informations</button>
+  <button type="submit" class="btn btn-primary btn-block mb-4" method="post" onclick="javascript: form.action='';"><i class="fas fa-check"></i> Valider les informations</button>
 
  
         
@@ -67,8 +68,7 @@ if (!isset($_SESSION['login'])) {
             $conn->exec($sql);
             //echo "Nouveaux enregistrement ajoutés avec sucéés";
           } catch(PDOException $e) {
-            echo $sql . "
-          " . $e->getMessage();
+            echo  'Merci de compléter vos informations.' ;
           }
           $conn = null;
           ?>
