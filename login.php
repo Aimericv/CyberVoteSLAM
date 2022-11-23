@@ -2,15 +2,18 @@
 include("./assets/includes/head.php");
 include("./assets/includes/header.php");
 include("./assets/includes/config.php");
+
 ?>
 
 <body>
   <?php
+
+
 if (isset($_POST['username'])){
   $username = stripslashes($_REQUEST['username']);
   $username = mysqli_real_escape_string($conn, $username);
-  $query = "SELECT * FROM `electeur` WHERE numero_carte_vote='$username'";
-  $result = mysqli_query($conn,$query) or die(mysql_error());
+  $query = "SELECT * FROM `Electeur` WHERE numero_carte_vote='$username'";
+  $result = mysqli_query($conn,$query) or die('Error: ' . mysqli_error($conn));
   $rows = mysqli_num_rows($result);
   if($rows==1){
       $_SESSION['login'] = $username;
