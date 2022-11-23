@@ -23,6 +23,9 @@ session_start();?>
         <li class="nav-item">
         <a class="nav-link" href="vote.php"><i class="fas fa-envelope"></i> Voter</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="dossier.php"><i class="fas fa-wrench"></i> Mon dossier</a>
+      </li>
         <li class="nav-item">
         <a class="nav-link" href="logout.php"><i class="fas fa-user-alt-slash"></i> Déconnexion</a>
       </li>			
