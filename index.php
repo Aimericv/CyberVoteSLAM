@@ -1,10 +1,6 @@
 <?php
 include("./assets/includes/head.php");
 include("./assets/includes/header.php");
-if (!isset($_SESSION['login'])) {
-	header ('Location: login.php');
-	exit();
-}
 ?>
 
 <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
