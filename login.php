@@ -7,8 +7,6 @@ include("./assets/includes/config.php");
 
 <body>
   <?php
-
-
 if (isset($_POST['username'])){
   $username = stripslashes($_REQUEST['username']);
   $username = mysqli_real_escape_string($conn, $username);

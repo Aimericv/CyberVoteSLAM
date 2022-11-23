@@ -24,18 +24,9 @@ if (!isset($_SESSION['login'])) {
         <button type="submit" method="post" onclick="javascript: form.action='';">Envoyer</button>
         
         <?php
-          $servername = "localhost";
-          $username = "cybervote";
-          $password = "cybervote";
-          $dbname = "cybervote";
-          $a= $_POST['nom'];
-          $b= $_POST['prenom'];
-          $c= $_POST['code_postale'];
-          $d= $_POST['date_naissance'];
+        
           
           try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            // définir le mode exception d'erreur PDO 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
             $sql = "INSERT INTO `Electeur` ( `nom`, `prenom`, `code_postale`, `date_naissance`)
