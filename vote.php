@@ -28,7 +28,7 @@ $resultat = $mysqli->query($requete);
 
 
 while ($ligne = $resultat->fetch_assoc()) {
-  var_dump($ligne);
+ //var_dump($ligne);
   echo $ligne['nom'] . ' ' . $ligne['prenom'] . '<form action="" method="post" name="">
   <input type="hidden" value="' .$ligne['Id_candidat'].'">
   <input type="submit" value="voter">
