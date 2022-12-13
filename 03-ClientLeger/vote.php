@@ -12,14 +12,11 @@ if (!isset($_SESSION['login'])) {
 
 
 
-  <h1>Hello, world!</h1>
 
 
-<?php
-include("./assets/includes/footer.php");
-?>
 
 <?php
+echo"<br>";
 
 $mysqli = new mysqli("172.16.196.254", "cybervote", "cybervote", "cybervote");
 $mysqli->set_charset("utf8");
@@ -49,4 +46,8 @@ $mysqli->close();
 
 
 
+?>
+
+<?php
+include("./assets/includes/footer.php");
 ?>
