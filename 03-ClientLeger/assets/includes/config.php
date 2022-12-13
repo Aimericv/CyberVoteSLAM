@@ -1,5 +1,5 @@
 <?php
-define('DB_SERVER', '172.16.196.254');
+define('DB_SERVER', '172.0.0.1');
 define('DB_USERNAME', 'cybervote');
 define('DB_PASSWORD', 'cybervote');
 define('DB_NAME', 'cybervote');
