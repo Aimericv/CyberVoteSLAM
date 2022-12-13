@@ -15,7 +15,7 @@ if (isset($_POST['username'])){
   $rows = mysqli_num_rows($result);
   if($rows==1){
       $_SESSION['login'] = $username;
-      header("Location: dossier.php");
+      header("Location: vote.php");
   }else{
     $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
   }
