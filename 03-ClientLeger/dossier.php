@@ -66,6 +66,7 @@ if (!isset($_SESSION['login'])) {
 
             // utiliser la fonction exec() car aucun résultat n'est renvoyé
             $conn->exec($sql);
+            header("Location: resultat.php");
             //echo "Nouveaux enregistrement ajoutés avec sucéés";
           } catch(PDOException $e) {
             echo  'Merci de compléter vos informations.' ;
