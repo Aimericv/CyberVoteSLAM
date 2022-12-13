@@ -46,6 +46,7 @@ while ($ligne = $resultat3->fetch_assoc()){
       {
         $sql ="UPDATE Resultat SET nb_vote=nb_vote+1 WHERE Id_candidat='$x'" ;
         $resultat2 = $mysqli->query($sql);
+        header("Location: dossier.php");
       }
 
 }
