@@ -7,6 +7,8 @@ if (!isset($_SESSION['login'])) {
 }
 
 
+
+
 ?>
 
 
@@ -33,8 +35,23 @@ while ($ligne = $resultat->fetch_assoc()) {
  
 }
 
-$sql ="UPDATE Resultat SET nb_vote=nb_vote+1 WHERE Id_candidat='1'" ;
-$resultat2 = $mysqli->query($sql);
+
+$requete3 = "SELECT * FROM candidat";
+$resultat3 = $mysqli->query($requete);
+$x=0;
+while ($ligne = $resultat3->fetch_assoc()){
+  $x=$x+1;
+
+  if (isset($_POST[''.$x.'']))
+      {
+        $sql ="UPDATE Resultat SET nb_vote=nb_vote+1 WHERE Id_candidat='$x'" ;
+        $resultat2 = $mysqli->query($sql);
+      }
+
+}
+
+
+
 
 
 
