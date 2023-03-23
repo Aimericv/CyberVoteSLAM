@@ -18,20 +18,10 @@ $servername = DB_SERVER;
 
 
 //$mysqli = new mysqli("172.16.196.254", "cybervote", "cybervote", "cybervote");
-$mysqli = new mysqli("localhost", "root", "root", "cybervotenew2");
+$mysqli = new mysqli("localhost", "root", "root", "cybervotev2");
 $mysqli->set_charset("utf8");
 $requete = "SELECT * FROM Candidat";
 $resultat = $mysqli->query($requete);
-
-
-while ($ligne = $resultat->fetch_assoc()) {
-
-  echo $ligne['Nom_Candidat'] . ' ' . $ligne['Prenom_Candidat'] . '<form action="" method="post" name="">
-
-  <input type="submit" name ="' .$ligne['Id_Candidat'].'" value="voter">
-  </form>'.'<br>';
- 
-}
 
 
 $requete3 = "SELECT * FROM Candidat";
@@ -54,6 +44,28 @@ $mysqli->close();
 
 
 ?>
+
+
+<center>
+<h3>Liste des candidats :</h3>
+<br>
+<table>
+    <tbody>
+        <tr>
+
+    <?php while ($ligne = $resultat->fetch_assoc()) {
+
+echo '<td><i class="fa-solid fa-user"></i> ' . $ligne['Nom_Candidat'] . '' . ' ' . $ligne['Prenom_Candidat'] . '&emsp;' . '' . 
+'<form action="" method="post" name="">
+<br>
+&emsp;&emsp;<input type="submit" name ="' .$ligne['Id_Candidat'].'" class="btn btn-primary" value="voter">
+</form></td>' ;
+
+}?>
+        </tr>
+    </tbody>
+</table>
+</center>
 
 <?php
 include("./assets/includes/footer.php");

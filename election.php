@@ -8,7 +8,7 @@ if (!isset($_SESSION['login'])) {
   exit();
 }
 
-$mysqli = new mysqli("localhost", "root", "root", "cybervotenew2");
+$mysqli = new mysqli("localhost", "root", "root", "cybervotev2");
 $mysqli->set_charset("utf8");
 $requete = "SELECT * FROM Election";
 $resultat = $mysqli->query($requete);
