@@ -23,14 +23,20 @@ include("./assets/includes/config.php");
   </thead>
   <tbody>
 									<?php
-										$services = $conn->query("SELECT * from Resultat ORDER BY nb_vote DESC LIMIT 10");
+									
+										$services = $conn->query("SELECT c.Nom_Candidat, c.Prenom_Candidat, e.nom_election, sp.NbVoix
+										FROM Candidat c
+										JOIN Se_Presentent sp ON c.Id_Candidat = sp.Id_Candidat
+										JOIN Election e ON sp.id_election = e.id_election
+										ORDER BY e.nom_election, sp.NbVoix DESC;
+										");
 										if ($services->num_rows > 0) {
 										    while($row = $services->fetch_assoc()) {
 									?>
 									<tr>
-										<td><?= $row['nom'] ?></td>
-										<td><?= $row['prenom'] ?></td>
-										<td><?= $row['nb_vote'] ?></td>
+										<td><?= $row['Nom_Candidat'] ?></td>
+										<td><?= $row['Prenom_Candidat'] ?></td>
+										<td><?= $row['NbVoix'] ?></td>
 									</tr>
 									<?php }
 										} else {

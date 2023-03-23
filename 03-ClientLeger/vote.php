@@ -6,37 +6,35 @@ if (!isset($_SESSION['login'])) {
     exit();
 }
 
-
-
-
 ?>
-
-
-
-
-
-
 
 <?php
 echo"<br>";
 
-$mysqli = new mysqli("172.16.196.254", "cybervote", "cybervote", "cybervote");
+$servername = DB_SERVER;
+          $username = DB_USERNAME;
+          $password = DB_PASSWORD;
+          $dbname = DB_NAME;
+
+
+//$mysqli = new mysqli("172.16.196.254", "cybervote", "cybervote", "cybervote");
+$mysqli = new mysqli("localhost", "root", "root", "cybervotenew2");
 $mysqli->set_charset("utf8");
-$requete = "SELECT * FROM candidat";
+$requete = "SELECT * FROM Candidat";
 $resultat = $mysqli->query($requete);
 
 
 while ($ligne = $resultat->fetch_assoc()) {
 
-  echo $ligne['nom'] . ' ' . $ligne['prenom'] . '<form action="" method="post" name="">
+  echo $ligne['Nom_Candidat'] . ' ' . $ligne['Prenom_Candidat'] . '<form action="" method="post" name="">
 
-  <input type="submit" name ="' .$ligne['Id_candidat'].'" value="voter">
+  <input type="submit" name ="' .$ligne['Id_Candidat'].'" value="voter">
   </form>'.'<br>';
  
 }
 
 
-$requete3 = "SELECT * FROM candidat";
+$requete3 = "SELECT * FROM Candidat";
 $resultat3 = $mysqli->query($requete);
 $x=0;
 while ($ligne = $resultat3->fetch_assoc()){
@@ -44,21 +42,12 @@ while ($ligne = $resultat3->fetch_assoc()){
 
   if (isset($_POST[''.$x.'']))
       {
-        $sql ="UPDATE Resultat SET nb_vote=nb_vote+1 WHERE Id_candidat='$x'" ;
+        $sql ="UPDATE Se_Presentent SET NbVoix=NbVoix+1 WHERE Id_Candidat='$x'" ;
         $resultat2 = $mysqli->query($sql);
         header("Location: dossier.php");
       }
 
 }
-
-
-
-
-
-
- 
-
-
 
 $mysqli->close();
 

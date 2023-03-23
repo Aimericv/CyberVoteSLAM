@@ -8,14 +8,19 @@ include("./assets/includes/config.php");
 <body>
   <?php
 if (isset($_POST['username'])){
+  
+
   $username = stripslashes($_REQUEST['username']);
   $username = mysqli_real_escape_string($conn, $username);
-  $query = "SELECT * FROM `Electeur` WHERE numero_carte_vote='$username'";
+  $query = "SELECT * FROM `CARTE_VOTE` WHERE NumCarteVote='$username'";
   $result = mysqli_query($conn,$query) or die('Error: ' . mysqli_error($conn));
   $rows = mysqli_num_rows($result);
   if($rows==1){
       $_SESSION['login'] = $username;
-      header("Location: vote.php");
+      header("Location: election.php");
+      
+  $result = mysqli_query($conn,$query) or die('Error: ' . mysqli_error($conn));
+  $rows = mysqli_num_rows($result);
   }else{
     $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
   }
@@ -35,7 +40,25 @@ if (isset($_POST['username'])){
             required />
           <label class="form-label" for="form2Example1">Numéro de carte vote</label>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary btn-block mb-4"><i class="fas fa-sign-out-alt"></i> Se connecter</button>
+        <button type="submit" name="submit" onclick="showAlert()" class="btn btn-primary btn-block mb-4"><i class="fas fa-sign-out-alt"></i> Se connecter</button>
+        <?php
+
+$mysqli = new mysqli("localhost", "root", "root", "cybervotenew2");
+$mysqli->set_charset("utf8");
+$requete = "SELECT * FROM Asso_10";
+$resultat = $mysqli->query($requete);
+$a=$resultat->fetch_assoc();
+$b= $a['CodeSecret'];
+
+
+        
+        ?>
+        <script>
+  function showAlert() {
+    var code =  <?php echo json_encode($b); ?>;
+    alert("Votre code secret est : " + code);
+  }
+</script>
     </div>
     </form>
   </div>
