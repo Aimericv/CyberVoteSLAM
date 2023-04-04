@@ -98,7 +98,7 @@ if ($rows >= 1) {
   $rows = mysqli_num_rows($result);
   if ($rows >= 1) {
     // Si le code secret est correct, on redirige vers la page de résultat
-    header("Location: resultat.php?id_election=$selected_election_id");
+    header("Location: resultat.php?election=$selected_election_id");
     exit();
   } else {
     $message = "Le code secret est incorrect.";
