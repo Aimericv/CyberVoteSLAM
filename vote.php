@@ -40,7 +40,7 @@ while ($ligne = $resultat3->fetch_assoc()) {
     if (isset($_POST["$x"])) {
         $sql = "UPDATE Se_Presentent SET NbVoix = NbVoix + 1 WHERE Id_Candidat = '$x'";
         $resultat2 = $mysqli->query($sql);
-        header("Location: dossier.php");
+        header("Location: dossier.php?id_election=$id_election");
     }
 }
 
@@ -48,7 +48,7 @@ while ($ligne = $resultat3->fetch_assoc()) {
     if (isset($_POST['vote-blanc'])) {
         $sql = "UPDATE Election SET VoteBlanc = VoteBlanc + 1 WHERE id_election = $id_election";
         $resultat2 = $mysqli->query($sql);
-        header("Location: dossier.php");
+        header("Location: dossier.php?id_election=$id_election");
     }
 
 
