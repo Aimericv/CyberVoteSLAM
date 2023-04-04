@@ -46,102 +46,66 @@ if (!isset($_SESSION['login'])) {
     <label class="form-label" for="form3Example4">Date de naissance</label>
   </div>
 
+  <div class="form-outline mb-4">
+    <input type="text" id="form3Example4" class="form-control" name="code_secret" />
+    <label class="form-label" for="form3Example4">Code secret</label>
+  </div>
+
 
 
   <button type="submit" class="btn btn-primary btn-block mb-4" method="post" onclick="javascript: form.action='';"><i class="fas fa-check"></i> Valider les informations</button>
 
  
   <?php
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['login'])) {
-	header ('Location: login.php');
-	exit();
+
+// Connexion à la base de données MySQL 
+$conn = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+// Vérifier la connexion
+if ($conn === false) {
+    die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 }
 
-// Vérifie si le formulaire est soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+$nom = $_POST['nom'];
+$nom = mysqli_real_escape_string($conn, stripslashes($nom));
 
-  // Vérifie si toutes les données sont présentes
-  if (!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['code_postal']) && !empty($_POST['date_naissance'])) {
+$prenom = $_POST['prenom'];
+$prenom = mysqli_real_escape_string($conn, stripslashes($prenom));
 
-    $servername = DB_SERVER;
-    $username = DB_USERNAME;
-    $password = DB_PASSWORD;
-    $dbname = DB_NAME;
+$date_naissance = $_POST['date_naissance'];
+$date_naissance = mysqli_real_escape_string($conn, stripslashes($date_naissance));
 
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $code_postal = $_POST['code_postal'];
-    $date_naissance = $_POST['date_naissance'];
-
-   
-
-    
-    
-
-    // Vérifie si l'utilisateur a plus de 18 ans
-    $date_naissance_timestamp = strtotime($date_naissance);
-    $age = date('Y') - date('Y', $date_naissance_timestamp);
-    if (date('md') < date('md', $date_naissance_timestamp)) {
-      $age--;
-    }
-    if ($age < 18) {
-      echo "Vous devez avoir au moins 18 ans pour vous inscrire.";
-    } else {
-      // Vérifie si le code postal est valide
-      if (preg_match("#^[0-9]{5}$#", $code_postal)) {
-        try {
-
-          
-          // Connexion à la base de données
-        // Connexion à la base de données
-$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$code_postal = $_POST['code_postal'];
+$code_postal = mysqli_real_escape_string($conn, stripslashes($code_postal));
 
 
 
 
-// Obtient le dernier Id_Electeur de la base de données
-$stmt = $conn->query("SELECT MAX(Id_Electeur) FROM Electeur");
-$lastId = $stmt->fetchColumn();
-
-// Incrémente le dernier Id_Electeur pour obtenir le nouvel Id_Electeur
-$newId = $lastId + 1;
-
-// Prépare la requête SQL pour insérer les données dans la base de données
-$stmt = $conn->prepare("INSERT INTO Electeur (Id_Electeur, Nom_Electeur, Prenom_Electeur, code_postal, date_naissance) VALUES (:id, :nom, :prenom, :code_postal, :date_naissance)");
-
-
-// Lie les paramètres de la requête SQL aux valeurs du formulaire
-$stmt->bindParam(':id', $newId);
-$stmt->bindParam(':nom', $nom);
-$stmt->bindParam(':prenom', $prenom);
-$stmt->bindParam(':code_postal', $code_postal);
-$stmt->bindParam(':date_naissance', $date_naissance);
-
-// Exécute la requête SQL pour insérer les données dans la base de données
-$stmt->execute();
-
-
-          // Redirige l'utilisateur vers la page de résultat
-         
-          header("Location: resultat.php");
-          exit();
-        } catch (PDOException $e) {
-          echo "Erreur : " . $e->getMessage();
-        }
-
-        // Ferme la connexion à la base de données
-        $conn = null;
-      } else {
-        echo "Le code postal est invalide.";
-      }
-    }
+$query = "SELECT `Nom_Electeur` FROM `Electeur` WHERE `Nom_Electeur` = '$nom' AND `Prenom_Electeur` = '$prenom' AND `date_naissance` = '$date_naissance'AND `code_postal` = '$code_postal'";
+$result = mysqli_query($conn, $query);
+$rows = mysqli_num_rows($result);
+if ($rows >= 1) {
+  $code_secret = $_POST['code_secret'];
+  $code_secret = mysqli_real_escape_string($conn, stripslashes($code_secret));
+  
+  $query = "SELECT `CodeSecret` FROM `Asso_10` WHERE `CodeSecret` = '$code_secret'";
+  $result = mysqli_query($conn, $query);
+ 
+  $rows = mysqli_num_rows($result);
+  
+  if ($rows >= 1) {
+      // Si le code secret est correct, on redirige vers la page de résultat
+      header("Location: resultat.php");
   } else {
-    echo "Tous les champs sont obligatoires.";
+      $message = "Le code secret est incorrect.";
   }
+} else {
+    $message = "Le nom d'utilisateur est incorrect.";
 }
 ?>
          

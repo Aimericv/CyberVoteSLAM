@@ -43,7 +43,7 @@ if (isset($_POST['username'])){
         <button type="submit" name="submit" onclick="showAlert()" class="btn btn-primary btn-block mb-4"><i class="fas fa-sign-out-alt"></i> Se connecter</button>
         <?php
 
-$mysqli = new mysqli("localhost", "root", "root", "cybervotev2");
+$mysqli = new mysqli("localhost", "root", "root", "cybervotenew2");
 $mysqli->set_charset("utf8");
 $requete = "SELECT * FROM Asso_10";
 $resultat = $mysqli->query($requete);
@@ -53,12 +53,7 @@ $b= $a['CodeSecret'];
 
         
         ?>
-        <script>
-  function showAlert() {
-    var code =  <?php echo json_encode($b); ?>;
-    alert("Votre code secret est : " + code);
-  }
-</script>
+ 
     </div>
     </form>
   </div>
