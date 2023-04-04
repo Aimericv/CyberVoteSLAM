@@ -85,28 +85,28 @@ $code_postal = mysqli_real_escape_string($conn, stripslashes($code_postal));
 
 
 
-
 $query = "SELECT `Nom_Electeur` FROM `Electeur` WHERE `Nom_Electeur` = '$nom' AND `Prenom_Electeur` = '$prenom' AND `date_naissance` = '$date_naissance'AND `code_postal` = '$code_postal'";
 $result = mysqli_query($conn, $query);
 $rows = mysqli_num_rows($result);
-if ($rows >= 1) {
-  $code_secret = $_POST['code_secret'];
-  $code_secret = mysqli_real_escape_string($conn, stripslashes($code_secret));
-  
-  $query = "SELECT `CodeSecret` FROM `Asso_10` WHERE `CodeSecret` = '$code_secret'";
-  $result = mysqli_query($conn, $query);
  
-  $rows = mysqli_num_rows($result);
+if ($rows >= 1) {
+  $selected_election_id = $_GET['id_election'];
+  $code_secret = mysqli_real_escape_string($conn, stripslashes($_POST['code_secret']));
+  $query = "SELECT `CodeSecret` FROM `Asso_10` JOIN `Election` ON `Asso_10`.`id_election` = `Election`.`id_election` WHERE `CodeSecret` = '$code_secret' AND `Asso_10`.`id_election` = $selected_election_id";
   
+  $result = mysqli_query($conn, $query);
+  $rows = mysqli_num_rows($result);
   if ($rows >= 1) {
-      // Si le code secret est correct, on redirige vers la page de résultat
-      header("Location: resultat.php");
+    // Si le code secret est correct, on redirige vers la page de résultat
+    header("Location: resultat.php?id_election=$selected_election_id");
+    exit();
   } else {
-      $message = "Le code secret est incorrect.";
+    $message = "Le code secret est incorrect.";
   }
 } else {
-    $message = "Le nom d'utilisateur est incorrect.";
+  $message = "Les informations d'identification sont incorrectes.";
 }
+
 ?>
          
          </form>
