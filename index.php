@@ -29,7 +29,7 @@ include("./assets/includes/header.php");
 
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="./assets/img/gouv.jpg" class="d-block w-100"/>
+      <img src="assets/img/gouv.jpg" class="d-block w-100"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>Voter c'est important !</h5>
         <p>Cybervote permet de voter en toute sécurité en ligne.</p>
@@ -37,14 +37,14 @@ include("./assets/includes/header.php");
     </div>
 
     <div class="carousel-item">
-    <img src="./assets/img/gouv.jpg" class="d-block w-100"/>
+    <img src="assets/img/gouv.jpg" class="d-block w-100"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>En cas d'absence ? </h5>
         <p>Utilisez cybervote si vous êtes absent, vous pouvez voter depuis le site !</p>
       </div>
     </div>
     <div class="carousel-item">
-    <img src="./assets/img/gouv.jpg" class="d-block w-100"/>
+    <img src="assets/img/gouv.jpg" class="d-block w-100"/>
       <div class="carousel-caption d-none d-md-block">
         <h5>Toute démarches sur gouv.fr</h5>
         <p>Vous pouvez faire vos démarches sur gouv.fr</p>
