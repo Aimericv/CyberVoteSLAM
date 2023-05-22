@@ -2,10 +2,10 @@
 -- version 4.9.5deb2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 23, 2022 at 06:32 PM
--- Server version: 10.3.34-MariaDB-0ubuntu0.20.04.1
--- PHP Version: 7.4.3
+-- Hôte : localhost:3306
+-- Généré le : lun. 22 mai 2023 à 18:41
+-- Version du serveur :  10.3.34-MariaDB-0ubuntu0.20.04.1
+-- Version de PHP : 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,326 +19,229 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cybervote`
+-- Base de données : `cybervote`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Asso_7`
---
-
-CREATE TABLE `Asso_7` (
-  `Id_Electeur` int(11) NOT NULL,
-  `Id_candidat` varchar(50) NOT NULL,
-  `Id_Electeur_1` int(11) NOT NULL,
-  `id_election` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Asso_8`
---
-
-CREATE TABLE `Asso_8` (
-  `Id_candidat` int(11) NOT NULL,
-  `Id_candidat_1` varchar(50) NOT NULL,
-  `Id_Electeur` int(11) NOT NULL,
-  `id_election` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Asso_9`
---
-
-CREATE TABLE `Asso_9` (
-  `id_election` tinyint(4) NOT NULL,
-  `Id_candidat` varchar(50) NOT NULL,
-  `Id_Electeur` int(11) NOT NULL,
-  `id_election_1` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Asso_10`
+-- Structure de la table `Asso_10`
 --
 
 CREATE TABLE `Asso_10` (
-  `Id_Electeur` int(11) NOT NULL,
-  `Id_Electeur_1` int(11) NOT NULL,
-  `id_election` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Asso_11`
---
-
-CREATE TABLE `Asso_11` (
   `id_election` tinyint(4) NOT NULL,
-  `Id_Electeur` int(11) NOT NULL,
-  `id_election_1` int(11) NOT NULL
+  `NumCarteVote` varchar(50) NOT NULL,
+  `CodeSecret` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `Asso_10`
+--
+
+INSERT INTO `Asso_10` (`id_election`, `NumCarteVote`, `CodeSecret`) VALUES
+(1, '1234-1234-1234-1234', '123456789'),
+(2, '1234-1234-1234-1234', '987654321');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `A_Voté`
+--
+
+CREATE TABLE `A_Voté` (
+  `id_election` tinyint(4) NOT NULL,
+  `NumCarteVote` varchar(50) NOT NULL,
+  `DateVote` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Authentification`
+-- Structure de la table `Candidat`
 --
 
-CREATE TABLE `Authentification` (
-  `Id_Electeur` int(11) NOT NULL,
-  `id_election` int(11) NOT NULL,
-  `code_secret` int(11) DEFAULT NULL
+CREATE TABLE `Candidat` (
+  `Id_Candidat` int(11) NOT NULL,
+  `Nom_Candidat` varchar(50) DEFAULT NULL,
+  `Prenom_Candidat` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `Candidat`
+--
+
+INSERT INTO `Candidat` (`Id_Candidat`, `Nom_Candidat`, `Prenom_Candidat`) VALUES
+(1, 'Macron', 'Emmanuel'),
+(2, 'Melenchon', 'Jean-Luc'),
+(3, 'Véron', 'Aurélien');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `candidat`
+-- Structure de la table `CARTE_VOTE`
 --
 
-CREATE TABLE `candidat` (
-  `Id_candidat` int(11) NOT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL
+CREATE TABLE `CARTE_VOTE` (
+  `NumCarteVote` varchar(50) NOT NULL,
+  `Id_Electeur` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `CARTE_VOTE`
+--
+
+INSERT INTO `CARTE_VOTE` (`NumCarteVote`, `Id_Electeur`) VALUES
+('1234-1234-1234-1234', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Electeur`
+-- Structure de la table `Electeur`
 --
 
 CREATE TABLE `Electeur` (
   `Id_Electeur` int(11) NOT NULL,
   `date_naissance` date DEFAULT NULL,
-  `code_postale` int(11) DEFAULT NULL,
-  `numero_carte_vote` varchar(30) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL
+  `code_postal` int(11) DEFAULT NULL,
+  `Nom_Electeur` varchar(50) DEFAULT NULL,
+  `Prenom_Electeur` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Electeur`
+-- Déchargement des données de la table `Electeur`
 --
 
-INSERT INTO `Electeur` (`Id_Electeur`, `date_naissance`, `code_postale`, `numero_carte_vote`, `nom`, `prenom`) VALUES
-(1, '2001-10-10', 79000, '1234-1234-1234-1234', 'dqzdq', 'dqzdqz'),
-(2, '2001-10-10', 79000, NULL, 'toi', 'salut'),
-(3, '2001-10-10', 86000, NULL, 'test', 'test'),
-(4, '2001-10-10', 86000, NULL, 'test', 'test'),
-(5, '2003-01-01', 17000, NULL, 'b', 'a'),
-(6, '2000-10-10', 79000, NULL, 'test', 'test'),
-(7, '2000-10-10', 79000, NULL, 'test', 'test'),
-(8, '2000-12-12', 6666, NULL, 'dzqdzq', 'dzqdzq'),
-(9, '2022-11-24', 79000, NULL, 'A', 'L'),
-(10, '2022-11-23', 23333, NULL, 'qqqq', 'dzqdzq');
+INSERT INTO `Electeur` (`Id_Electeur`, `date_naissance`, `code_postal`, `Nom_Electeur`, `Prenom_Electeur`) VALUES
+(1, '2000-01-01', 17000, 'a', 'b'),
+(2, '2000-01-01', 17260, 'Vermesse', 'Aimeric'),
+(3, '2000-01-01', 17260, 'Vermesse', 'Aimeric'),
+(4, '2000-01-01', 17260, 'Vermesse', 'Aimeric'),
+(5, '2000-10-01', 17260, 'Vermesse', 'Aimeric'),
+(6, '2000-01-01', 17260, 'Vermesse', 'Aimeric'),
+(7, '2000-01-01', 17000, 'a', 'b'),
+(8, '2000-01-01', 17260, 'Vermesse', 'Aimeric');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Election`
+-- Structure de la table `Election`
 --
 
 CREATE TABLE `Election` (
   `id_election` tinyint(4) NOT NULL,
+  `nom_election` varchar(50) DEFAULT NULL,
   `date_election` date DEFAULT NULL,
-  `nb_vote` int(11) NOT NULL
+  `VoteBlanc` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `Election`
+--
+
+INSERT INTO `Election` (`id_election`, `nom_election`, `date_election`, `VoteBlanc`) VALUES
+(1, 'Presidentielle', '2023-10-10', '4'),
+(2, 'Election_Maire', '2023-06-01', '2');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Resultat`
---
-
-CREATE TABLE `Resultat` (
-  `nb_vote` int(11) NOT NULL,
-  `id_election` int(11) DEFAULT NULL,
-  `Id_candidat` int(11) DEFAULT NULL,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Se_Presentent`
+-- Structure de la table `Se_Presentent`
 --
 
 CREATE TABLE `Se_Presentent` (
-  `Id_candidat` int(11) NOT NULL,
-  `id_election` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Vote`
---
-
-CREATE TABLE `Vote` (
-  `Id_candidat` varchar(50) NOT NULL,
-  `Id_Electeur` int(11) NOT NULL,
-  `id_election` varchar(50) NOT NULL,
-  `vote` varchar(50) NOT NULL
+  `Id_Candidat` int(11) NOT NULL,
+  `id_election` tinyint(4) NOT NULL,
+  `NbVoix` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Déchargement des données de la table `Se_Presentent`
+--
+
+INSERT INTO `Se_Presentent` (`Id_Candidat`, `id_election`, `NbVoix`) VALUES
+(1, 1, 24),
+(2, 1, 10),
+(3, 2, 10);
+
+--
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `Asso_7`
---
-ALTER TABLE `Asso_7`
-  ADD PRIMARY KEY (`Id_Electeur`,`Id_candidat`,`Id_Electeur_1`,`id_election`),
-  ADD KEY `Id_candidat` (`Id_candidat`,`Id_Electeur_1`,`id_election`);
-
---
--- Indexes for table `Asso_8`
---
-ALTER TABLE `Asso_8`
-  ADD PRIMARY KEY (`Id_candidat`,`Id_candidat_1`,`Id_Electeur`,`id_election`),
-  ADD KEY `Id_candidat_1` (`Id_candidat_1`,`Id_Electeur`,`id_election`);
-
---
--- Indexes for table `Asso_9`
---
-ALTER TABLE `Asso_9`
-  ADD PRIMARY KEY (`id_election`,`Id_candidat`,`Id_Electeur`,`id_election_1`),
-  ADD KEY `Id_candidat` (`Id_candidat`,`Id_Electeur`,`id_election_1`);
-
---
--- Indexes for table `Asso_10`
+-- Index pour la table `Asso_10`
 --
 ALTER TABLE `Asso_10`
-  ADD PRIMARY KEY (`Id_Electeur`,`Id_Electeur_1`,`id_election`),
-  ADD KEY `Id_Electeur_1` (`Id_Electeur_1`,`id_election`);
+  ADD PRIMARY KEY (`id_election`,`NumCarteVote`),
+  ADD KEY `NumCarteVote` (`NumCarteVote`);
 
 --
--- Indexes for table `Asso_11`
+-- Index pour la table `A_Voté`
 --
-ALTER TABLE `Asso_11`
-  ADD PRIMARY KEY (`id_election`,`Id_Electeur`,`id_election_1`),
-  ADD KEY `Id_Electeur` (`Id_Electeur`,`id_election_1`);
+ALTER TABLE `A_Voté`
+  ADD PRIMARY KEY (`id_election`,`NumCarteVote`),
+  ADD KEY `NumCarteVote` (`NumCarteVote`);
 
 --
--- Indexes for table `Authentification`
+-- Index pour la table `Candidat`
 --
-ALTER TABLE `Authentification`
-  ADD PRIMARY KEY (`Id_Electeur`,`id_election`);
+ALTER TABLE `Candidat`
+  ADD PRIMARY KEY (`Id_Candidat`);
 
 --
--- Indexes for table `candidat`
+-- Index pour la table `CARTE_VOTE`
 --
-ALTER TABLE `candidat`
-  ADD PRIMARY KEY (`Id_candidat`);
+ALTER TABLE `CARTE_VOTE`
+  ADD PRIMARY KEY (`NumCarteVote`),
+  ADD UNIQUE KEY `Id_Electeur` (`Id_Electeur`);
 
 --
--- Indexes for table `Electeur`
+-- Index pour la table `Electeur`
 --
 ALTER TABLE `Electeur`
   ADD PRIMARY KEY (`Id_Electeur`);
 
 --
--- Indexes for table `Election`
+-- Index pour la table `Election`
 --
 ALTER TABLE `Election`
-  ADD PRIMARY KEY (`id_election`),
-  ADD KEY `nb_vote` (`nb_vote`);
+  ADD PRIMARY KEY (`id_election`);
 
 --
--- Indexes for table `Resultat`
---
-ALTER TABLE `Resultat`
-  ADD PRIMARY KEY (`nb_vote`);
-
---
--- Indexes for table `Se_Presentent`
+-- Index pour la table `Se_Presentent`
 --
 ALTER TABLE `Se_Presentent`
-  ADD PRIMARY KEY (`Id_candidat`,`id_election`),
+  ADD PRIMARY KEY (`Id_Candidat`,`id_election`),
   ADD KEY `id_election` (`id_election`);
 
 --
--- Indexes for table `Vote`
---
-ALTER TABLE `Vote`
-  ADD PRIMARY KEY (`Id_candidat`,`Id_Electeur`,`id_election`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `candidat`
---
-ALTER TABLE `candidat`
-  MODIFY `Id_candidat` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Electeur`
---
-ALTER TABLE `Electeur`
-  MODIFY `Id_Electeur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `Asso_7`
---
-ALTER TABLE `Asso_7`
-  ADD CONSTRAINT `Asso_7_ibfk_1` FOREIGN KEY (`Id_Electeur`) REFERENCES `Electeur` (`Id_Electeur`),
-  ADD CONSTRAINT `Asso_7_ibfk_2` FOREIGN KEY (`Id_candidat`,`Id_Electeur_1`,`id_election`) REFERENCES `Vote` (`Id_candidat`, `Id_Electeur`, `id_election`);
-
---
--- Constraints for table `Asso_8`
---
-ALTER TABLE `Asso_8`
-  ADD CONSTRAINT `Asso_8_ibfk_1` FOREIGN KEY (`Id_candidat`) REFERENCES `candidat` (`Id_candidat`),
-  ADD CONSTRAINT `Asso_8_ibfk_2` FOREIGN KEY (`Id_candidat_1`,`Id_Electeur`,`id_election`) REFERENCES `Vote` (`Id_candidat`, `Id_Electeur`, `id_election`);
-
---
--- Constraints for table `Asso_9`
---
-ALTER TABLE `Asso_9`
-  ADD CONSTRAINT `Asso_9_ibfk_1` FOREIGN KEY (`id_election`) REFERENCES `Election` (`id_election`),
-  ADD CONSTRAINT `Asso_9_ibfk_2` FOREIGN KEY (`Id_candidat`,`Id_Electeur`,`id_election_1`) REFERENCES `Vote` (`Id_candidat`, `Id_Electeur`, `id_election`);
-
---
--- Constraints for table `Asso_10`
+-- Contraintes pour la table `Asso_10`
 --
 ALTER TABLE `Asso_10`
-  ADD CONSTRAINT `Asso_10_ibfk_1` FOREIGN KEY (`Id_Electeur`) REFERENCES `Electeur` (`Id_Electeur`),
-  ADD CONSTRAINT `Asso_10_ibfk_2` FOREIGN KEY (`Id_Electeur_1`,`id_election`) REFERENCES `Authentification` (`Id_Electeur`, `id_election`);
+  ADD CONSTRAINT `Asso_10_ibfk_1` FOREIGN KEY (`id_election`) REFERENCES `Election` (`id_election`),
+  ADD CONSTRAINT `Asso_10_ibfk_2` FOREIGN KEY (`NumCarteVote`) REFERENCES `CARTE_VOTE` (`NumCarteVote`);
 
 --
--- Constraints for table `Asso_11`
+-- Contraintes pour la table `A_Voté`
 --
-ALTER TABLE `Asso_11`
-  ADD CONSTRAINT `Asso_11_ibfk_1` FOREIGN KEY (`id_election`) REFERENCES `Election` (`id_election`),
-  ADD CONSTRAINT `Asso_11_ibfk_2` FOREIGN KEY (`Id_Electeur`,`id_election_1`) REFERENCES `Authentification` (`Id_Electeur`, `id_election`);
+ALTER TABLE `A_Voté`
+  ADD CONSTRAINT `A_Voté_ibfk_1` FOREIGN KEY (`id_election`) REFERENCES `Election` (`id_election`),
+  ADD CONSTRAINT `A_Voté_ibfk_2` FOREIGN KEY (`NumCarteVote`) REFERENCES `CARTE_VOTE` (`NumCarteVote`);
 
 --
--- Constraints for table `Election`
+-- Contraintes pour la table `CARTE_VOTE`
 --
-ALTER TABLE `Election`
-  ADD CONSTRAINT `Election_ibfk_1` FOREIGN KEY (`nb_vote`) REFERENCES `Resultat` (`nb_vote`);
+ALTER TABLE `CARTE_VOTE`
+  ADD CONSTRAINT `CARTE_VOTE_ibfk_1` FOREIGN KEY (`Id_Electeur`) REFERENCES `Electeur` (`Id_Electeur`);
 
 --
--- Constraints for table `Se_Presentent`
+-- Contraintes pour la table `Se_Presentent`
 --
 ALTER TABLE `Se_Presentent`
-  ADD CONSTRAINT `Se_Presentent_ibfk_1` FOREIGN KEY (`Id_candidat`) REFERENCES `candidat` (`Id_candidat`),
+  ADD CONSTRAINT `Se_Presentent_ibfk_1` FOREIGN KEY (`Id_Candidat`) REFERENCES `Candidat` (`Id_Candidat`),
   ADD CONSTRAINT `Se_Presentent_ibfk_2` FOREIGN KEY (`id_election`) REFERENCES `Election` (`id_election`);
 COMMIT;
 
